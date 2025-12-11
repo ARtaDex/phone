@@ -396,8 +396,13 @@ local function OpenPhone()
     end)
 end
 
+--testing call functions
 local function GenerateCallId(caller, target)
-    local CallId = math.ceil(((tonumber(caller) + tonumber(target)) / 100 * 1))
+    -- Konversi ke number, jika gagal (nil/string huruf) paksa jadi 0 agar tidak error
+    local callerNum = tonumber(caller) or 0
+    local targetNum = tonumber(target) or 0
+    
+    local CallId = math.ceil(((callerNum + targetNum) / 100 * 1))
     return CallId
 end
 
